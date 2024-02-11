@@ -24,7 +24,7 @@ export default () => {
       {JSON.stringify(sessions)}
       <Link to="/about">About</Link>
       <Link to="/about/1">About 1</Link>
-      <Link to="/about/2">About 2</Link>
+      <Link to="/auth">Auth</Link>
     </div>
   )
 }
