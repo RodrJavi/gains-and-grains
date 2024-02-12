@@ -4,6 +4,7 @@ import { supabase } from '@/supabaseClient';
 
 export default () => {
 
+  
   const [sessions, setSessions] = useState<any[]>([]);
 
   const getSessions = async () => {

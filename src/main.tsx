@@ -14,7 +14,11 @@ import { supabase } from '@/supabaseClient'
 import type { Session } from '@supabase/supabase-js'
 
 function App() {
+  
+  const currentRoute = useRoutes(routes)
+
   const [session, setSession] = useState<Session | null>(null)
+
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -26,26 +30,21 @@ function App() {
     })
   }, [])
 
-
   return (
     !session 
       ? <Auth /> 
       : <Suspense fallback={<p>Loading...</p>}>
-        {useRoutes(routes)}
+        {currentRoute}
       </Suspense>
   )
 }
 
-const app = createRoot(document.getElementById('root')!)
-
-app.render(
-  <StrictMode>
-    <Router>
-      <App />
-    </Router>
-  </StrictMode>,
-)
-
-{/* <Route exact path="/">
-  {auth ? <Redirect to="/dashboard" /> : </auth />}
-</Route> */}
+document.addEventListener('DOMContentLoaded', () => {
+  createRoot(document.getElementById('root')!).render(
+    <StrictMode>
+      <Router>
+        <App />
+      </Router>
+    </StrictMode>,
+  )
+})
