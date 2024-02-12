@@ -9,7 +9,7 @@ import routes from '~react-pages'
 
 import '@/assets/index.css' 
 
-import { Auth } from '@/components/auth'
+import { Auth } from '@/components/Auth'
 import { supabase } from '@/supabaseClient'
 import type { Session } from '@supabase/supabase-js'
 
