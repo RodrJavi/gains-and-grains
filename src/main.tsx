@@ -1,50 +1,34 @@
-import { StrictMode, Suspense } from 'react'
-import { useState, useEffect } from 'react'
-import { createRoot } from 'react-dom/client'
-import {
-  BrowserRouter as Router,
-  useRoutes,
-} from 'react-router-dom'
-import routes from '~react-pages'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import '@/assets/index.css' 
+import { Landing, Login, Home, SignUp } from "@/pages";
 
-import { Auth } from '@/components/Auth'
-import { supabase } from '@/supabaseClient'
-import type { Session } from '@supabase/supabase-js'
+import "@/assets/styles/index.css";
 
-function App() {
-  
-  const currentRoute = useRoutes(routes)
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Landing />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/signup",
+    element: <SignUp />,
+  },
+  {
+    path: "/home",
+    element: <Home />,
+  },
+]);
 
-  const [session, setSession] = useState<Session | null>(null)
-
-
-  useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session)
-    })
-
-    supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session)
-    })
-  }, [])
-
-  return (
-    !session 
-      ? <Auth /> 
-      : <Suspense fallback={<p>Loading...</p>}>
-        {currentRoute}
-      </Suspense>
-  )
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  createRoot(document.getElementById('root')!).render(
+document.addEventListener("DOMContentLoaded", () => {
+  createRoot(document.getElementById("root")!).render(
     <StrictMode>
-      <Router>
-        <App />
-      </Router>
-    </StrictMode>,
-  )
-})
+      <RouterProvider router={router} />
+    </StrictMode>
+  );
+});

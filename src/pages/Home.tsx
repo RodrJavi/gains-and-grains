@@ -1,9 +1,7 @@
-import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
 import { supabase } from "@/supabaseClient";
 import { Tables } from "@/types/supabase";
 
-const Index = () => {
+export const Home = () => {
   const [sessions, setSessions] = useState<Tables<"sessions">[]>([]);
 
   const getSessions = async () => {
@@ -22,11 +20,6 @@ const Index = () => {
     <div>
       <p>index.tsx</p>
       {JSON.stringify(sessions)}
-      <Link to="/about">About</Link>
-      <Link to="/about/1">About 1</Link>
-      <Link to="/auth">Auth</Link>
     </div>
   );
 };
-
-export default Index;

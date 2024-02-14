@@ -1,4 +1,3 @@
-import { useId, useState } from "react";
 import type { FC } from "react";
 
 export type Tab = {
@@ -32,9 +31,7 @@ export const Tabs: FC<TabsProps> = ({ items }) => {
         );
       })}
 
-      <div>
-        {currentItem?.content}
-      </div>
+      <div>{currentItem?.content}</div>
     </div>
   );
 };

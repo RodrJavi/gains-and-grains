@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+html {
+  height: 100%;
+  font-family: "inter", sans-serif;
+}
+
+body {
+  background-color: #F1F12F;
+  
+}
+
+.alignment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5em 3em;
+}
+
+.landing-spacing{
+  justify-content: space-between;
+  height: 100vh;
+}
+.landing-title {
+  font-size: 48px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.landing-button {
+  border: 2px solid black;
+  width: 100%;
+  border-radius: 7px;
+  background-color: #DADA30;
+  width: 80%;
+  padding: 10px;
+}
+
+.landing-signin {
+  font-size:36px;
+  font-weight: bold;
+  width: 100%;
+}
