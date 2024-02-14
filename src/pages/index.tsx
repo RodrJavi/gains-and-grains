@@ -1,23 +1,22 @@
-import { Link } from 'react-router-dom'
-import { useState, useEffect } from 'react';
-import { supabase } from '@/supabaseClient';
+import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { supabase } from "@/supabaseClient";
+import { Tables } from "@/types/supabase";
 
-export default () => {
-
-  
-  const [sessions, setSessions] = useState<any[]>([]);
+const Index = () => {
+  const [sessions, setSessions] = useState<Tables<"sessions">[]>([]);
 
   const getSessions = async () => {
-    const {data} = await supabase.from("sessions").select();
+    const { data } = await supabase.from("sessions").select();
 
-    if (!data) return
+    if (!data) return;
 
     setSessions(data);
-  }
+  };
 
   useEffect(() => {
     getSessions();
-  }, [])
+  }, []);
 
   return (
     <div>
@@ -27,5 +26,7 @@ export default () => {
       <Link to="/about/1">About 1</Link>
       <Link to="/auth">Auth</Link>
     </div>
-  )
-}
+  );
+};
+
+export default Index;
