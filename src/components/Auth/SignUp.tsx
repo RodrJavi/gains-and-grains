@@ -12,7 +12,7 @@ export const SignUp = () => {
 
     setLoading(true);
 
-    await supabase.auth.signInWithPassword({
+    await supabase.auth.signUp({
       email,
       password,
     });
