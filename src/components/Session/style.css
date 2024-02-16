@@ -1,0 +1,25 @@
+.session-item {
+  border: 1px solid black;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  font-size: 20px;
+  padding: .4em;
+  gap: .4em;
+  border-radius: 4px;
+  
+  & .session-icon {
+    font-size: 33px;
+  }
+  
+  & .option-icon {
+    font-size: 25px;
+    place-self: center;
+  }
+  
+  & .circle {
+    background-color: var(--main-gray);
+    border-radius: 100%;
+    padding: .1em;
+  }
+}

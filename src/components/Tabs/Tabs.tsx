@@ -12,24 +12,28 @@ export type TabsProps = {
 
 export const Tabs: FC<TabsProps> = ({ items }) => {
   const name = useId();
-  const [currentTab, setCurrentTab] = useState("");
+  const [currentTab, setCurrentTab] = useState(items[0].value);
 
   const currentItem = items.find((tab) => tab.value === currentTab);
 
   return (
-    <div>
-      {items.map((tab) => {
-        return (
-          <label key={tab.value}>
-            <input
-              type="radio"
-              name={name}
-              onChange={() => setCurrentTab(tab.value)}
-            />
-            <div className="">{tab.title}</div>
-          </label>
-        );
-      })}
+    <div className="tabs">
+      <div className="tab-items">
+        {items.map((tab) => {
+          return (
+            <label key={tab.value} className="tab-item">
+              <input
+                type="radio"
+                name={name}
+                onChange={() => setCurrentTab(tab.value)}
+                checked={tab.value === currentTab}
+              />
+
+              {tab.title}
+            </label>
+          );
+        })}
+      </div>
 
       <div>{currentItem?.content}</div>
     </div>

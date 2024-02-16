@@ -1,0 +1,29 @@
+.tabs {
+  display: flex;
+  flex-direction: column;
+
+  & .tab-items {
+    display: flex;
+    width: 100%;
+  }
+
+  & .tab-item {
+    flex: 1;
+    text-align: center;
+    border: 1px solid black;
+    font-size: 28px;
+    padding: 5px;
+    background-color: var(--main-gray);
+    
+    &:has(:checked) {
+      background-color: white;
+    }
+
+  }
+
+  & input[type="radio"] {
+    position: fixed;
+    opacity: 0;
+    pointer-events: none;
+  }
+}

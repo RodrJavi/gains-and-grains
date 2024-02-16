@@ -8,7 +8,7 @@ export default defineConfig({
   plugins: [
     react(),
     AutoImport({
-      imports: ["react", "react-router-dom"],
+      imports: ["react", "react-router-dom", { "@iconify/react": ["Icon"] }],
       dts: "src/auto-imports.d.ts",
     }),
   ],

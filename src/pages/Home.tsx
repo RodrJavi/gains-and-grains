@@ -1,24 +1,21 @@
-import { supabase } from "@/supabaseClient";
-import { Tables } from "@/types/supabase";
-import { Tabs } from "@/components/Tabs";
-import { LiftingTab } from "@/components/LiftingTab";
-import { EatingTab } from "@/components/EatingTab";
-import { Header } from "@/components/Header";
+// import { supabase } from "@/supabaseClient";
+// import { Tables } from "@/types/supabase";
+import { Tabs, LiftingTab, EatingTab, Header } from "@/components";
 
 export const Home = () => {
-  const [sessions, setSessions] = useState<Tables<"sessions">[]>([]);
+  // const [sessions, setSessions] = useState<Tables<"sessions">[]>([]);
 
-  const getSessions = async () => {
-    const { data } = await supabase.from("sessions").select();
+  // const getSessions = async () => {
+  //   const { data } = await supabase.from("sessions").select();
 
-    if (!data) return;
+  //   if (!data) return;
 
-    setSessions(data);
-  };
+  //   setSessions(data);
+  // };
 
-  useEffect(() => {
-    getSessions();
-  }, []);
+  // useEffect(() => {
+  //   getSessions();
+  // }, []);
 
   const liftingTab = {
     title: "Lifting",
@@ -36,7 +33,6 @@ export const Home = () => {
     <div>
       <Header back={true} text="Header text" logout={true} />
       <Tabs items={[liftingTab, eatingTab]} />
-      {JSON.stringify(sessions)}
     </div>
   );
 };

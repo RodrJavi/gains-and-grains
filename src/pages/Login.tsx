@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { supabase } from "@/supabaseClient";
-import { InputField } from "@/components/InputField/InputField";
+import { InputField } from "@/components";
 
 export const Login = () => {
   const [loading, setLoading] = useState(false);
