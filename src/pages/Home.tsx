@@ -1,5 +1,9 @@
 import { supabase } from "@/supabaseClient";
 import { Tables } from "@/types/supabase";
+import { Tabs } from "@/components/Tabs";
+import { LiftingTab } from "@/components/LiftingTab";
+import { EatingTab } from "@/components/EatingTab";
+import { Header } from "@/components/Header";
 
 export const Home = () => {
   const [sessions, setSessions] = useState<Tables<"sessions">[]>([]);
@@ -16,9 +20,22 @@ export const Home = () => {
     getSessions();
   }, []);
 
+  const liftingTab = {
+    title: "Lifting",
+    value: "Lifting",
+    content: <LiftingTab />,
+  };
+
+  const eatingTab = {
+    title: "Eating",
+    value: "Eating",
+    content: <EatingTab />,
+  };
+
   return (
     <div>
-      <p>index.tsx</p>
+      <Header back={true} text="Header text" logout={true} />
+      <Tabs items={[liftingTab, eatingTab]} />
       {JSON.stringify(sessions)}
     </div>
   );

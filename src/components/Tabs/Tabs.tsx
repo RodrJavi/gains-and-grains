@@ -26,7 +26,7 @@ export const Tabs: FC<TabsProps> = ({ items }) => {
               name={name}
               onChange={() => setCurrentTab(tab.value)}
             />
-            {tab.title}
+            <div className="">{tab.title}</div>
           </label>
         );
       })}
