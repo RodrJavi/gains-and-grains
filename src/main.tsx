@@ -1,7 +1,8 @@
-import { StrictMode } from "react";
+import { StrictMode, Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
+import { AuthGuard } from "@/components/AuthGuard";
 import { Landing, Login, Home, SignUp } from "@/pages";
 
 import "@/assets/styles/index.css";
@@ -21,14 +22,20 @@ const router = createBrowserRouter([
   },
   {
     path: "/home",
-    element: <Home />,
+    element: (
+      <AuthGuard>
+        <Home />
+      </AuthGuard>
+    ),
   },
 ]);
 
 document.addEventListener("DOMContentLoaded", () => {
   createRoot(document.getElementById("root")!).render(
     <StrictMode>
-      <RouterProvider router={router} />
+      <Suspense fallback={<div>Loading...</div>}>
+        <RouterProvider router={router} />
+      </Suspense>
     </StrictMode>
   );
 });
