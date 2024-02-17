@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import { AuthGuard } from "@/components/AuthGuard";
-import { Landing, Login, Home, SignUp } from "@/pages";
+import { Landing, Login, Home, SignUp, SessionCreate } from "@/pages";
 
 import "@/assets/styles/index.css";
 
@@ -27,6 +27,19 @@ const router = createBrowserRouter([
         <Home />
       </AuthGuard>
     ),
+  },
+  {
+    path: "/sessions",
+    children: [
+      {
+        path: "/sessions/new",
+        element: <SessionCreate />,
+      },
+      {
+        path: "/sessions/:sessionId",
+        element: <div>Session</div>,
+      },
+    ],
   },
 ]);
 
