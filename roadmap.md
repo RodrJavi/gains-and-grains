@@ -1,5 +1,5 @@
 - header
-  - [ ] log out button
+  - [x] log out button
   - [ ] styling
 - auth
   - [x] redirect user on login

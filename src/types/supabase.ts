@@ -11,21 +11,32 @@ export type Database = {
     Tables: {
       sessions: {
         Row: {
-          exercises: Json | null;
+          created_by: string;
+          exercises: Json;
           id: number;
-          name: string | null;
+          name: string;
         };
         Insert: {
-          exercises?: Json | null;
+          created_by: string;
+          exercises: Json;
           id?: never;
-          name?: string | null;
+          name: string;
         };
         Update: {
-          exercises?: Json | null;
+          created_by?: string;
+          exercises?: Json;
           id?: never;
-          name?: string | null;
+          name?: string;
         };
-        Relationships: [];
+        Relationships: [
+          {
+            foreignKeyName: "public_sessions_created_by_fkey";
+            columns: ["created_by"];
+            isOneToOne: false;
+            referencedRelation: "users";
+            referencedColumns: ["id"];
+          }
+        ];
       };
     };
     Views: {

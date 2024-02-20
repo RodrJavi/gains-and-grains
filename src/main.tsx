@@ -6,7 +6,14 @@ import {
   redirect,
 } from "react-router-dom";
 
-import { Landing, Login, Home, SignUp, SessionCreate } from "@/pages";
+import {
+  Landing,
+  Login,
+  Home,
+  SignUp,
+  SessionCreate,
+  SessionView,
+} from "@/pages";
 import { supabase } from "@/supabaseClient";
 
 import "@/assets/styles/index.css";
@@ -44,7 +51,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/sessions/:sessionId",
-        element: <div>Session</div>,
+        element: <SessionView />,
       },
     ],
   },
