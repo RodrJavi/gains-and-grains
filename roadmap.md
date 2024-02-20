@@ -1,0 +1,22 @@
+- header
+  - [ ] log out button
+  - [ ] styling
+- auth
+  - [x] redirect user on login
+  - [ ] redirect user on sign up
+  - [ ] add correct titles for login/signup
+  - [ ] styling
+- lifting tab
+  - [ ] heatmap tracker for how often you work out
+  - [ ] get workouts from the database
+  - [ ] click new workout button to redirect to the new workouts page
+  - [ ] ability to edit/delete workouts
+    - [ ] edit page?
+- new workouts page
+  - [ ] form that adds a lift type
+  - [ ] submit button that adds a workout to the workouts table and redirects the user back to home
+- session page
+  - [ ] url param to the session id
+  - [ ] ability to track each workout
+  - [ ] progress bar on top
+  - [ ] complete button that marks that session as complete for the day and redirects user to home

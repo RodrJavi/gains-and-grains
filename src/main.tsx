@@ -1,11 +1,21 @@
 import { StrictMode, Suspense } from "react";
 import { createRoot } from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  redirect,
+} from "react-router-dom";
 
-import { AuthGuard } from "@/components/AuthGuard";
 import { Landing, Login, Home, SignUp, SessionCreate } from "@/pages";
+import { supabase } from "@/supabaseClient";
 
 import "@/assets/styles/index.css";
+
+const authLoader = async () => {
+  const { data } = await supabase.auth.getSession();
+  if (!data.session) return redirect("/login");
+  return data.session;
+};
 
 const router = createBrowserRouter([
   {
@@ -22,11 +32,8 @@ const router = createBrowserRouter([
   },
   {
     path: "/home",
-    element: (
-      <AuthGuard>
-        <Home />
-      </AuthGuard>
-    ),
+    element: <Home />,
+    loader: authLoader,
   },
   {
     path: "/sessions",

@@ -1,17 +1,32 @@
 import type { FC } from "react";
+import { supabase } from "@/supabaseClient";
 
-export type Props = {
+export type HeaderProps = {
   back: boolean;
   text: string;
   logout: boolean;
 };
 
-export const Header: FC<Props> = ({ back, text, logout }) => {
+export const Header: FC<HeaderProps> = ({ back, text }) => {
+  const navigate = useNavigate();
+
+  const signOut = async () => {
+    await supabase.auth.signOut();
+    navigate("/login");
+  };
+
   return (
     <header>
-      {back && "back button"}
-      <p>{text}</p>
-      {logout && "logout button"}
+      <div>
+        {back && "back button"}
+        <p>{text}</p>
+      </div>
+      <button
+        onClick={async () => {
+          signOut();
+        }}>
+        <Icon icon="mdi:logout" className="logout-icon" />
+      </button>
     </header>
   );
 };

@@ -4,4 +4,3 @@ export * from "./InputField";
 export * from "./LiftingTab";
 export * from "./Session";
 export * from "./Tabs";
-export * from "./AuthGuard";

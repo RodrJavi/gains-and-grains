@@ -5,6 +5,11 @@ export const SessionCreate = () => {
   const [exerciseName, setExerciseName] = useState("");
   const [repCount, setRepCount] = useState(1);
 
+  function addRep(n: number) {
+    if (repCount + n < 1) return;
+    setRepCount(repCount + n);
+  }
+
   return (
     <div>
       <InputField
@@ -24,16 +29,9 @@ export const SessionCreate = () => {
       <div>
         <p>Number of sets</p>
         <div>
-          <button
-            onClick={() => {
-              if (repCount > 1) {
-                setRepCount(repCount - 1);
-              }
-            }}>
-            -
-          </button>
+          <button onClick={() => addRep(-1)}>-</button>
           <span>{repCount}</span>
-          <button onClick={() => setRepCount(repCount + 1)}>+</button>
+          <button onClick={() => addRep(1)}>+</button>
           <button>Add exercise</button>
         </div>
       </div>
